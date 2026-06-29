@@ -2,7 +2,7 @@ import { Collapsible } from "@base-ui/react/collapsible";
 import { cloneElement, useState, type ReactElement, type ReactNode } from "react";
 import { useSidebar } from "./sidebar-context";
 import { SidebarTooltip } from "./sidebar-tooltip";
-import { getElementProps, getNodeText } from "@/lib/jsx";
+import { getElementProps } from "@/lib/jsx";
 import { cva } from "class-variance-authority";
 import { Link } from "@tanstack/react-router";
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
@@ -47,9 +47,8 @@ export function SidebarCollapsible(props: SidebarCollapsibleProps) {
 
   const trigger = cloneElement(props.renderTrigger, {
     useTooltip: false,
-  });
-
-  console.log(trigger);
+    // oxlint-disable-next-line typescript/no-explicit-any
+  } as any);
 
   const childrenArray: ReactElement[] = Array.isArray(props.children)
     ? props.children

@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Side paddings with safe zones */
+@utility pt-safe-* {
+  padding-top: calc(env(safe-area-inset-top) + --spacing(--value(integer, [length])));
+}
+@utility pb-safe-* {
+  padding-bottom: calc(env(safe-area-inset-bottom) + --spacing(--value(integer, [length])));
+}
+@utility pl-safe-* {
+  padding-left: calc(env(safe-area-inset-left) + --spacing(--value(integer, [length])));
+}
+@utility pr-safe-* {
+  padding-right: calc(env(safe-area-inset-right) + --spacing(--value(integer, [length])));
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@theme inline {
+  /*
+   * Dominative colors.
+   */
+
+  /* Example use: everywhere as default */
+  --color-background: var(--background); /* Background */
+  --color-foreground: var(--foreground); /* Foreground */
+
+  /* Example use: accent buttons, screaming banners, etc. */
+  --color-primary: var(--primary); /* Primary background */
+  --color-primary-foreground: var(--primary-foreground); /* Primary foreground */
+
+  /* Example use: usual buttons */
+  --color-secondary: var(--secondary); /* Secondary background */
+  --color-secondary-foreground: var(--secondary-foreground); /* Secondary foreground */
+
+  /*
+   * Assistive colors.
+   * Muted foreground is NOT placeholder foreground!
+   */
+
+  /* Example use: sections descriptions, dialog descriptions, important legal info, etc. */
+  --color-muted: var(--muted); /* Muted background */
+  --color-muted-foreground: var(--muted-foreground); /* Muted foreground */
+
+  /* Example use: IDK, borders? Separators, etc. */
+  --color-border: var(--border); /* Borders colors */
+
+  /* Example use: focus ring only. */
+  --color-ring: var(--ring); /* Focus ring */
+
+  /* Example use: dialogs, toasts, cards, etc. */
+  --color-surface: var(--surface); /* Cards background */
+  --color-surface-foreground: var(--surface-foreground); /* Cards foreground */
+
+  /*
+   * Components-specific colors
+   */
+
+  /* Example use: inputs only. */
+  --color-input: var(--input); /* Input background */
+  --color-input-foreground: var(--input-foreground); /* Input foreground */
+  --color-input-placeholder: var(--input-placeholder); /* Input placeholder */
+
+  /* Example use: sidebar only */
+  --color-sidebar: var(--sidebar); /* Sidebar background */
+  --color-sidebar-foreground: var(--sidebar-foreground); /* Sidebar foreground */
+
+  /*
+   * Statuses "traffic lights".
+   * Don't use postfixless colors for standalone texts!
+   */
+
+  /* Example use: status labels, info toasts, standalone info text, etc. */
+  --color-info: var(--info); /* Info background */
+  --color-info-foreground: var(--info-foreground); /* Info foreground */
+  --color-info-standalone: var(--info-standalone); /* Independent info text */
+
+  /* Example use: status labels, success toasts, standalone success text, etc. */
+  --color-success: var(--success); /* Success background */
+  --color-success-foreground: var(--success-foreground); /* Success foreground */
+  --color-success-standalone: var(--success-standalone); /* Independent success text */
+
+  /* Example use: failure labels, error toasts, standalone warning text, etc. */
+  --color-warning: var(--warning); /* Warning background */
+  --color-warning-foreground: var(--warning-foreground); /* Warning foreground */
+  --color-warning-standalone: var(--warning-standalone); /* Independent warning text */
+
+  /* Example use: failure labels, error toasts, standalone error text, etc. */
+  --color-destructive: var(--destructive); /* Danger background */
+  --color-destructive-foreground: var(--destructive-foreground); /* Danger foreground */
+  --color-destructive-standalone: var(--destructive-standalone); /* Independent danger text */
+}
+
+/* Light theme colors */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.4955 0.1943 260.47);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.89 0.006 286.32);
+  --secondary-foreground: oklch(0.141 0.005 285.823);
+  --muted: oklch(0.92 0.004 286.375);
+  --muted-foreground: oklch(0.45 0.012 285.938);
+  --border: oklch(0.8653 0.0019 261.27);
+  --ring: oklch(0.546 0.345 262.881);
+  --surface: oklch(0.9849 0.0031 264.542);
+  --surface-foreground: oklch(0.134 0.0049 257.301);
+  --input: oklch(0.94 0.004 286.286);
+  --input-foreground: oklch(0.141 0.005 285.823);
+  --input-placeholder: oklch(0.552 0.016 285.938);
+  --sidebar: oklch(0.98 0.001 286);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --info: oklch(0.9427 0.0298 238.167);
+  --info-foreground: oklch(0.4851 0.1444 242.062);
+  --info-standalone: oklch(0.4851 0.1444 242.062);
+  --success: oklch(0.9506 0.0305 163.63);
+  --success-foreground: oklch(0.5057 0.129 164.84);
+  --success-standalone: oklch(0.5057 0.129 164.84);
+  --warning: oklch(0.9554 0.0336 86.85);
+  --warning-foreground: oklch(0.5283 0.165 42.457);
+  --warning-standalone: oklch(0.5283 0.165 42.457);
+  --destructive: oklch(0.9234 0.0357 15.656);
+  --destructive-foreground: oklch(0.4746 0.1983 23.447);
+  --destructive-standalone: oklch(0.4746 0.1983 23.447);
+}
+
+/* Dark theme colors */
+.dark {
+  --background: oklch(0.1665 0.0051 205.163);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.546 0.1943 260.47);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.34 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.21 0.006 285.885);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --border: oklch(0.2921 0.0028 261.218);
+  --ring: oklch(0.7 0.345 262.881);
+  --surface: oklch(0.1903 0.0063 215.371);
+  --surface-foreground: oklch(0.995 0.0318 162.286);
+  --input: oklch(0.4 0 258.33);
+  --input-foreground: oklch(0.985 0 0);
+  --input-placeholder: oklch(0.705 0.015 286.067);
+  --sidebar: oklch(0.1907 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --info: oklch(0.2223 0.0232 239.566);
+  --info-foreground: oklch(0.803 0.1444 220.89);
+  --info-standalone: oklch(0.803 0.1444 220.89);
+  --success: oklch(0.2319 0.0232 163.676);
+  --success-foreground: oklch(0.7818 0.1951 155.158);
+  --success-standalone: oklch(0.7818 0.1951 155.158);
+  --warning: oklch(0.2475 0.0331 93.983);
+  --warning-foreground: oklch(0.8301 0.1717 82.184);
+  --warning-standalone: oklch(0.8301 0.1717 82.184);
+  --destructive: oklch(0.2129 0.0323 16.716);
+  --destructive-foreground: oklch(0.7055 0.1812 24.366);
+  --destructive-standalone: oklch(0.7055 0.1812 24.366);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark light;
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.no-scrollbar {
+}
